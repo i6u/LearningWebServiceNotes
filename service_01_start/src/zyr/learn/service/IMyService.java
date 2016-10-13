@@ -1,5 +1,7 @@
 package zyr.learn.service;
 
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 import java.util.List;
 
@@ -8,7 +10,12 @@ import java.util.List;
  */
 @WebService
 public interface IMyService {
-    public int add(int...ns);
+    @WebResult(name = "addResult")
+    public int add(@WebParam(name = "ns") int...ns);
 
-    public List<String> minus(String... str);
+    @WebResult(name = "minusResult")
+    public List<String> minus(@WebParam(name = "str") String... str);
+
+    @WebResult(name = "getUser")
+    public User getUser(@WebParam(name = "id") int id);
 }

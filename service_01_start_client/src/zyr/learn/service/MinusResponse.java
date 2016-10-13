@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -19,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="minusResult" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,26 +29,25 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "minusResponse", propOrder = {
-    "_return"
+    "minusResult"
 })
 public class MinusResponse {
 
-    @XmlElement(name = "return")
-    protected List<String> _return;
+    protected List<String> minusResult;
 
     /**
-     * Gets the value of the return property.
+     * Gets the value of the minusResult property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the return property.
+     * This is why there is not a <CODE>set</CODE> method for the minusResult property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getReturn().add(newItem);
+     *    getMinusResult().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +57,11 @@ public class MinusResponse {
      * 
      * 
      */
-    public List<String> getReturn() {
-        if (_return == null) {
-            _return = new ArrayList<String>();
+    public List<String> getMinusResult() {
+        if (minusResult == null) {
+            minusResult = new ArrayList<String>();
         }
-        return this._return;
+        return this.minusResult;
     }
 
 }

@@ -12,14 +12,14 @@ import java.util.List;
 public class TestClient {
     public static void main(String[] args) {
         try {
-            URL url = new URL("http://localhost:8888/ns?wsdl");
+            URL url = new URL("http://localhost:9988/ns?wsdl");
             QName qName = new QName("http://service.learn.zyr/","MyServiceImplService");
             Service service = Service.create(url, qName);
 
             IMyService myService = service.getPort(IMyService.class);
-            System.out.println(myService.add(1,2,3,4,5,10,15));
-            List<String> list = myService.minus("a","b","c");
-            System.out.println(list instanceof List);
+            System.out.println(myService.add(10,15));
+            //List<String> list = myService.minus("a","b","c");
+            //System.out.println(list instanceof List);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

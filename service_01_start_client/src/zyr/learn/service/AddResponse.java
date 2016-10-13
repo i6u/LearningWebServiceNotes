@@ -3,7 +3,6 @@ package zyr.learn.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -17,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="addResult" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,27 +27,26 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "addResponse", propOrder = {
-    "_return"
+    "addResult"
 })
 public class AddResponse {
 
-    @XmlElement(name = "return")
-    protected int _return;
+    protected int addResult;
 
     /**
-     * 获取return属性的值。
+     * 获取addResult属性的值。
      * 
      */
-    public int getReturn() {
-        return _return;
+    public int getAddResult() {
+        return addResult;
     }
 
     /**
-     * 设置return属性的值。
+     * 设置addResult属性的值。
      * 
      */
-    public void setReturn(int value) {
-        this._return = value;
+    public void setAddResult(int value) {
+        this.addResult = value;
     }
 
 }

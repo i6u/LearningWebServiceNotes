@@ -28,4 +28,13 @@ public class MyServiceImpl implements IMyService {
         System.out.println("...service minus:"+list.size());
         return list;
     }
+
+    @Override
+    public User getUser(int id) {
+        User user = new User();
+        user.setId(id);
+        user.setUsername("张三丰");
+        System.out.println("...service user:"+id);
+        return user;
+    }
 }
