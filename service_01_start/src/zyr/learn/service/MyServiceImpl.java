@@ -37,4 +37,13 @@ public class MyServiceImpl implements IMyService {
         System.out.println("...service user:"+id);
         return user;
     }
+
+    @Override
+    public User getUserInfo(int id, String name) {
+        User user = new User();
+        user.setId(id);
+        user.setUsername(name);
+        System.out.println("...service userInfo:"+id+"/"+name);
+        return user;
+    }
 }

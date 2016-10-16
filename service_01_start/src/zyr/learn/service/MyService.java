@@ -7,7 +7,7 @@ import javax.xml.ws.Endpoint;
  */
 public class MyService {
     public static void main(String[] args) {
-        String addr = "http://localhost:8888/ns";
+        String addr = "http://192.168.199.178:8888/ns";
         Endpoint.publish(addr, new MyServiceImpl());
     }
 }

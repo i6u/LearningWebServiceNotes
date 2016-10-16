@@ -18,4 +18,7 @@ public interface IMyService {
 
     @WebResult(name = "getUser")
     public User getUser(@WebParam(name = "id") int id);
+
+    @WebResult(name = "getUser")
+    public User getUserInfo(@WebParam(name = "id") int id,@WebParam(name = "name") String name);
 }
