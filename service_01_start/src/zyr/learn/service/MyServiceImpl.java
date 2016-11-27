@@ -2,10 +2,13 @@ package zyr.learn.service;
 
 import javax.jws.WebService;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhouweitao on 2016/10/12.
+ *
  */
 @WebService(endpointInterface = "zyr.learn.service.IMyService")
 public class MyServiceImpl implements IMyService {
@@ -46,4 +49,27 @@ public class MyServiceImpl implements IMyService {
         System.out.println("...service userInfo:"+id+"/"+name);
         return user;
     }
+
+    @Override
+    public List<User> getUsers() {
+        List<User> list = new ArrayList<>();
+        list.add(new User(1,"apache"));
+        list.add(new User(2,"spring"));
+        list.add(new User(3,"w3c"));
+        return list;
+    }
+
+    @Override
+    public Map<Integer, User> getUserMap() {
+        Map<Integer, User> map = new HashMap<>();
+        map.put(1, new User(11,"php"));
+        map.put(2, new User(22,"python"));
+        map.put(3, new User(33,"javascript"));
+        map.put(4, new User(33,"javascript1"));
+        map.put(5, new User(33,"javascript2"));
+        map.put(6, new User(33,"javascript3"));
+        return map;
+    }
+
+
 }

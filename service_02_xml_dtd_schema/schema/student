@@ -1,0 +1,20 @@
+<students>
+    <student>
+        <id>1</id>
+        <name>mark</name>
+        <age>31</age>
+        <gender>male</gender>
+        <phone>1263821</phone>
+        <email>abc@acom.com</email>
+        <address>ua</address>
+    </student>
+    <student>
+        <id>2</id>
+        <name>rose</name>
+        <age>28</age>
+        <gender>woman</gender>
+        <phone>female</phone>
+        <email>ace@acom.com</email>
+        <address>china</address>
+    </student>
+</students>

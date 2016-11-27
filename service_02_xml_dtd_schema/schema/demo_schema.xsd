@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="abc"
+           xmlns="abc"
+           elementFormDefault="qualified">
+
+    <!--
+       |使用Schema定义一个学生
+
+       1. 先定义一个人的标准
+
+       * 姓名：必须，有且只有一个
+       * 性别：必须，男、女、其他中的一个
+       * 出生日期：必须，有且只有一个
+
+       2. 定义学生特有的特征
+
+       * 学号：必须，11位
+       * 政治特征：必须，要么选，要么自定义
+       * 座右铭：非必须
+      -->
+    <xs:element name="persons">
+        <xs:complexType>
+            <xs:sequence>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="nameType">
+        <xs:sequence>
+            <xs:element name="firstname" type="xs:string"/>
+            <xs:element name="lastname" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="personType">
+       <xs:sequence>
+           <xs:element name="username" type=""/>
+
+       </xs:sequence>
+    </xs:complexType>
+</xs:schema>
