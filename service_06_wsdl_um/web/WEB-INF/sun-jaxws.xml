@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<endpoints xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime' version='2.0'>
+
+    <!--
+        name:这个name没弄清楚，看官网也没明白，目前来说好像没什么影响（http://docs.oracle.com/cd/E17802_01/webservices/webservices/docs/2.0/jaxws/jaxws-war.html）
+        implementation：服务提供接口的实现类
+        url-pattern：web.xml中<url-pattern>/services</url-pattern>配置的路径
+    -->
+    <endpoint
+            name='UserService'
+            implementation='zyr.learn.service.UserServiceImpl'
+            url-pattern='/services'/>
+</endpoints>

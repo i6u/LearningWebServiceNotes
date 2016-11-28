@@ -77,6 +77,15 @@ Schema中元素是如何被定义的，属性是如何被定义的，元素和�
 
 ```Exception in thread "main" java.lang.AssertionError: org.xml.sax.SAXParseException; systemId: jar:file:/Users/zhouweitao/work/Workspace/IDEA/LearningWebServiceNotes/service_05_wsdl_client/lib/jaxb-xjc.jar!/com/sun/tools/xjc/reader/xmlschema/bindinfo/binding.xsd; lineNumber: 52; columnNumber: 88; schema_reference: 由于 accessExternalSchema 属性设置的限制而不允许 'file' 访问, 因此无法读取方案文档 'xjc.xsd'。```
 
-* 基于契约优先的模式，在`wsdl`文件中约定好头信息，生成的客户端代码不会出现异常的方法参数，这样在服务端的方法中显示的声明头信息也不会影响到生成的客户端代码
-* 
+> 基于契约优先的模式，在`wsdl`文件中约定好头信息，生成的客户端代码不会出现异常的方法参数，这样在服务端的方法中显示的声明头信息也不会影响到生成的客户端代码  
+
+### service_06_wsdl_um--》在web项目中发布webservice服务 --》基于契约优先
+
+[jax-ws jaxws-war官方配置文档](http://docs.oracle.com/cd/E17802_01/webservices/webservices/docs/2.0/jaxws/jaxws-war.html)
+
+* 导入`jax-ws`包
+* 在`WEB-INF`中创建`wsdl\*.wsdl`文件
+* 在`WEB-INF`文件夹下创建`sun-jaxws.xml`文件，具体看项目中的注释
+* 配置`web.xml`文件，配置监听，和servlet
+* ok启动服务
 
