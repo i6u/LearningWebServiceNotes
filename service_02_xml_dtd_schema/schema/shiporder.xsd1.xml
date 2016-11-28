@@ -1,0 +1,17 @@
+<s1:shiporder orderid="201" xmlns:s1="http://www.zyr.learn/s1">
+  <s1:orderperson>string</s1:orderperson>
+  <s1:shipto>
+    <s1:name>string</s1:name>
+    <s1:address>string</s1:address>
+    <s1:city>string</s1:city>
+    <s1:country>string</s1:country>
+  </s1:shipto>
+  <!--1 or more repetitions:-->
+  <s1:item>
+    <s1:title>string</s1:title>
+    <!--Optional:-->
+    <s1:note>string</s1:note>
+    <s1:quantity>string</s1:quantity>
+    <s1:price>1000.00</s1:price>
+  </s1:item>
+</s1:shiporder>

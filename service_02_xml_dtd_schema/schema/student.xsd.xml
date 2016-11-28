@@ -1,0 +1,12 @@
+<students>
+  <!--1 or more repetitions:-->
+  <student>
+    <id>100</id>
+    <name>string</name>
+    <age>100</age>
+    <gender>string</gender>
+    <phone>string</phone>
+    <email>string</email>
+    <address>string</address>
+  </student>
+</students>

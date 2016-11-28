@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.4-b01. --><wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/mywsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MyServiceImplService" targetNamespace="http://www.example.org/mywsdl/">
+
+    <!--
+        name="MyServiceImplService"
+        这是服务名称，与<wsdl:service name="MyServiceImplService">一致
+
+        targetNamespace="http://www.example.org/mywsdl/"
+        这是wsdl的命名空间，与接口和实现类上指明的命名空间一致
+    -->
+
+    <!--1. 编写 types
+        types中编写服务提供的方法，以及返回值
+    -->
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.example.org/mywsdl/">
+            <!--add方法，type="tns：add"在<xsd:complexType name="add">中指明方法的参数-->
+            <xsd:element name="add" type="tns:add"></xsd:element>
+            <!--add方法的返回值，在<xsd:complexType name="addResponse">中指明返回值的类型-->
+            <xsd:element name="addResponse" type="tns:addResponse"></xsd:element>
+            <xsd:element name="divide" type="tns:divide"></xsd:element>
+            <xsd:element name="divideResponse" type="tns:divideResponse"></xsd:element>
+
+            <xsd:element name="licenseInfo" type="xsd:string"></xsd:element>
+
+            <xsd:complexType name="add">
+                <xsd:sequence>
+                    <xsd:element name="a" type="xsd:int"></xsd:element>
+                    <xsd:element name="b" type="xsd:int"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="addResponse">
+                <xsd:sequence>
+                    <xsd:element name="addResult" type="xsd:int"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="divide">
+                <xsd:sequence>
+                    <xsd:element name="c" type="xsd:int"></xsd:element>
+                    <xsd:element name="d" type="xsd:int"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="divideResponse">
+                <xsd:sequence>
+                    <xsd:element name="divideResult" type="xsd:int"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+
+    <!--2. 编写message，message中指明消息传递的内容，具体内容在types中声明-->
+
+    <wsdl:message name="add">
+        <!--element="tns:add"对应types只中的<xsd:element name="add" />-->
+        <wsdl:part name="add" element="tns:add"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addResponse">
+        <wsdl:part name="addResponse" element="tns:addResponse"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="divide">
+        <wsdl:part name="divide" element="tns:divide"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="divideResponse">
+        <wsdl:part name="divideResponse" element="tns:divideResponse"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="licenseInfo">
+        <wsdl:part name="licenseInfo" element="tns:licenseInfo"></wsdl:part>
+    </wsdl:message>
+
+
+    <!--3. 编写portType指定方法的接口，哪些是请求方法，哪些是返回方法，具体方法message="tns:add"在<wsdl:message name="add">中声明-->
+    <wsdl:portType name="IMyService">
+        <wsdl:operation name="add">
+            <wsdl:input message="tns:add"></wsdl:input>
+            <wsdl:output message="tns:addResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="divide">
+            <wsdl:input message="tns:divide"></wsdl:input>
+            <wsdl:output message="tns:divideResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!--4. 编写binding，指定方法传递接收的soap消息body格式
+
+        type="tns:IMyService"在<wsdl:portType name="IMyService">中声明
+        <wsdl:binding name="MyServiceSOAP"/> 提供给<wsdl:service name="MyServiceImplService">中的<wsdl:port binding="tns:MyServiceSOAP"/>使用
+    -->
+    <wsdl:binding name="MyServiceSOAP" type="tns:IMyService">
+        <soap:binding style="document" transport="http://schema.xmlsoap.org/soap/http"></soap:binding>
+        <wsdl:operation name="add">
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+                <!--添加头信息-->
+                <soap:header message="tns:licenseInfo" part="licenseInfo" use="literal"></soap:header>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="divide">
+            <wsdl:input>
+                <soap:body use="literal"></soap:body>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"></soap:body>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <!--5. 编写service
+
+        指定soap服务地址这个地址会在Endpoint.publish("http://localhost:8881/ms", new MyServiceImpl());被覆盖
+    -->
+    <wsdl:service name="MyServiceImplService">
+        <wsdl:port binding="tns:MyServiceSOAP" name="MyServiceImplPort">
+            <soap:address location="http://localhost:8888/ms"></soap:address>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,17 @@
+<s1:shiporder orderid="201" xmlns:s1="http://www.zyr.learn/s1">
+  <s1:orderperson>string</s1:orderperson>
+  <!--<shipto>-->
+    <!--<name>string</name>-->
+    <!--<address>string</address>-->
+    <!--<city>string</city>-->
+    <!--<country>string</country>-->
+  <!--</shipto>-->
+  <!--&lt;!&ndash;1 or more repetitions:&ndash;&gt;-->
+  <!--<item>-->
+    <!--<title>string</title>-->
+    <!--&lt;!&ndash;Optional:&ndash;&gt;-->
+    <!--<note>string</note>-->
+    <!--<quantity>string</quantity>-->
+    <!--<price>1000.00</price>-->
+  <!--</item>-->
+</s1:shiporder>
