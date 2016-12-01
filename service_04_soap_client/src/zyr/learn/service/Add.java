@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for add complex type.
+ * <p>add complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="add">
@@ -37,7 +37,7 @@ public class Add {
     protected int b;
 
     /**
-     * Gets the value of the a property.
+     * 获取a属性的值。
      * 
      */
     public int getA() {
@@ -45,7 +45,7 @@ public class Add {
     }
 
     /**
-     * Sets the value of the a property.
+     * 设置a属性的值。
      * 
      */
     public void setA(int value) {
@@ -53,7 +53,7 @@ public class Add {
     }
 
     /**
-     * Gets the value of the b property.
+     * 获取b属性的值。
      * 
      */
     public int getB() {
@@ -61,7 +61,7 @@ public class Add {
     }
 
     /**
-     * Sets the value of the b property.
+     * 设置b属性的值。
      * 
      */
     public void setB(int value) {

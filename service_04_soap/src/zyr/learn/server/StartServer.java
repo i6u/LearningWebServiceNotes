@@ -7,7 +7,7 @@ import javax.xml.ws.Endpoint;
  */
 public class StartServer {
     public static void main(String[] args) {
-        Endpoint.publish("http://192.168.199.178:9999/ms", new MyService());
-        System.out.println("http://192.168.199.178:9999/ms?wsdl");
+        Endpoint.publish("http://localhost:9999/ms", new MyService());
+        System.out.println("http://localhost:9999/ms?wsdl");
     }
 }

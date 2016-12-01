@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for addResponse complex type.
+ * <p>addResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="addResponse">
@@ -34,7 +34,7 @@ public class AddResponse {
     protected int addResult;
 
     /**
-     * Gets the value of the addResult property.
+     * 获取addResult属性的值。
      * 
      */
     public int getAddResult() {
@@ -42,7 +42,7 @@ public class AddResponse {
     }
 
     /**
-     * Sets the value of the addResult property.
+     * 设置addResult属性的值。
      * 
      */
     public void setAddResult(int value) {

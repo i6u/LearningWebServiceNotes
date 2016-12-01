@@ -5,21 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for listResponse complex type.
+ * <p>listResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="listResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://server.learn.zyr/}user" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="user" type="{http://server.learn.zyr/}user" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -34,7 +33,6 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ListResponse {
 
-    @XmlElement(namespace = "http://server.learn.zyr/")
     protected List<User> user;
 
     /**

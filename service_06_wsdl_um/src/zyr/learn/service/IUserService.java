@@ -24,75 +24,71 @@ public interface IUserService {
 
 
     /**
-     * 
+     *
      * @param user
      */
     @WebMethod
     @RequestWrapper(localName = "add", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.Add")
     @ResponseWrapper(localName = "addResponse", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.AddResponse")
     public void add(
-        @WebParam(name = "user", targetNamespace = "http://service.learn.zyr")
-                User user)
-        throws UserException
+            @WebParam(name = "user", targetNamespace = "")
+                    User user)
+            throws UserException
     ;
 
     /**
-     * 
+     *
      * @param username
-     * @throws UserException
      */
     @WebMethod
     @RequestWrapper(localName = "delete", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.Delete")
     @ResponseWrapper(localName = "deleteResponse", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.DeleteResponse")
     public void delete(
-        @WebParam(name = "username", targetNamespace = "http://service.learn.zyr")
-        String username)
-        throws UserException
+            @WebParam(name = "username", targetNamespace = "")
+                    String username)
+            throws UserException
     ;
 
     /**
-     * 
+     *
      * @return
-     *     returns java.util.List<zyr.learn.model.User>
+     *     returns java.util.List<zyr.learn.service.User>
      */
     @WebMethod
-    @WebResult(name = "user", targetNamespace = "http://service.learn.zyr")
+    @WebResult(name = "user", targetNamespace = "")
     @RequestWrapper(localName = "list", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.List")
     @ResponseWrapper(localName = "listResponse", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.ListResponse")
     public List<User> list();
 
     /**
-     * 
-     * @param password
+     *
      * @param username
+     * @param password
      * @return
-     *     returns zyr.learn.model.User
-     * @throws UserException
+     *     returns zyr.learn.service.User
      */
     @WebMethod
-    @WebResult(name = "user", targetNamespace = "http://service.learn.zyr")
+    @WebResult(name = "user", targetNamespace = "")
     @RequestWrapper(localName = "login", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.Login")
     @ResponseWrapper(localName = "loginResponse", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.LoginResponse")
     public User login(
-        @WebParam(name = "username", targetNamespace = "http://service.learn.zyr")
-        String username,
-        @WebParam(name = "password", targetNamespace = "http://service.learn.zyr")
-        String password)
-        throws UserException
+            @WebParam(name = "username", targetNamespace = "")
+                    String username,
+            @WebParam(name = "password", targetNamespace = "")
+                    String password)
+            throws UserException
     ;
 
+
     /**
-     * 
+     *
      * @param file
-     * @throws UserException
      */
     @WebMethod
     @RequestWrapper(localName = "upload", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.Upload")
     @ResponseWrapper(localName = "uploadResponse", targetNamespace = "http://service.learn.zyr", className = "zyr.learn.service.UploadResponse")
     public void upload(
-        @WebParam(name = "file", targetNamespace = "http://service.learn.zyr")
-        byte[] file)
-        throws UserException
-    ;
+            @WebParam(name = "file", targetNamespace = "http://service.learn.zyr")
+                    byte[] file);
 
 }

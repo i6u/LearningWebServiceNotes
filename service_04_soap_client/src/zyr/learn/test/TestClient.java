@@ -1,12 +1,10 @@
 package zyr.learn.test;
 
 import org.junit.Test;
-import zyr.learn.service.IMyService;
-import zyr.learn.service.MyServiceService;
-import zyr.learn.service.User;
-import zyr.learn.service.UserException_Exception;
+import zyr.learn.service.*;
 
 import javax.xml.namespace.QName;
+import javax.xml.ws.Holder;
 import javax.xml.ws.soap.SOAPFaultException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,15 +16,26 @@ public class TestClient {
     @Test
     public void test01(){
         try {
-            URL url = new URL("http://192.168.199.178:8989/ms?wsdl");
+            URL url = new URL("http://localhost:9999/ms?wsdl");
             QName qName = new QName("http://server.learn.zyr/", "MyServiceService");
-            MyServiceService ms = new MyServiceService(url, qName);
+            //MyServiceService ms = new MyServiceService(url, qName);
 
 
-            //MyServiceService ms = new MyServiceService();
+            MyServiceService ms = new MyServiceService();
             IMyService ims = ms.getMyServicePort();
             User user = ims.login("root", "root");
             System.out.println(user);
+            User user1 = new User();
+            user1.setUid(2);
+            user1.setUsername("大圣");
+            user1.setPassword("free");
+            ims.addUser(new Holder<>(user1));
+
+
+            ListResponse listResponse = ims.list(null, null);
+            for (User u : listResponse.getUser()) {
+                System.out.println(u);
+            }
 
 
         } catch (MalformedURLException e) {

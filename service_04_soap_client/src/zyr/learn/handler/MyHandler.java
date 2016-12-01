@@ -39,8 +39,8 @@ public class MyHandler implements SOAPHandler<SOAPMessageContext> {
                 header = header == null ? envelope.addHeader() : header;
 
                 QName qn = new QName(ns, "licenseInfo", "ns");
-                //header.addHeaderElement(qn).setValue("ab");
-                //System.out.println(header.getTextContent());
+                header.addHeaderElement(qn).setValue("ab");
+                System.out.println(header.getTextContent());
             }
         } catch (SOAPException e) {
             e.printStackTrace();

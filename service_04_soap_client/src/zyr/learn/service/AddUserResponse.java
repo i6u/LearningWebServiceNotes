@@ -3,21 +3,20 @@ package zyr.learn.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for addUserResponse complex type.
+ * <p>addUserResponse complex type的 Java 类。
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>以下模式片段指定包含在此类中的预期内容。
  * 
  * <pre>
  * &lt;complexType name="addUserResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://server.learn.zyr/}user" minOccurs="0"/>
+ *         &lt;element name="user" type="{http://server.learn.zyr/}user" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,11 +31,10 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class AddUserResponse {
 
-    @XmlElement(namespace = "http://server.learn.zyr/")
     protected User user;
 
     /**
-     * Gets the value of the user property.
+     * 获取user属性的值。
      * 
      * @return
      *     possible object is
@@ -48,7 +46,7 @@ public class AddUserResponse {
     }
 
     /**
-     * Sets the value of the user property.
+     * 设置user属性的值。
      * 
      * @param value
      *     allowed object is

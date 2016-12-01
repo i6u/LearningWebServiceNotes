@@ -89,3 +89,16 @@ Schema中元素是如何被定义的，属性是如何被定义的，元素和�
 * 配置`web.xml`文件，配置监听，和servlet
 * ok启动服务
 
+### service_06_wsdl_um_client --》基于jax-ws RI的方式传递消息头
+
+**传递`header`信息的三种方式**
+
+* 通过`SAAJ`创建SOAPBody
+* 通过`SAOPHandler`处理
+* 通过`JAX-WS RI`的方式（`Headers.create(element)`）直接把一个元素转换为`handler`
+
+```javax.xml.ws.soap.SOAPFaultException:webFault.messageName()方法异常，这是应为jdk也提供了这个jax-ws ri的实现，但是应为版本的问题，没有webFault.messageName()这个方法，项目默认却调用的jdk中jax-ws ri，没有调用我们手动导入的jax-ri包中的webFault.messageName()方法，解决方法是在jdk的jre中endorsed文件夹，把我们导入的高版本的jax-ws ri包拷贝到其中，jdk默认就会去加载这个包；如果项目时发布到tomcat中endorsed应放在tomcat根目录下```
+
+[java endorsed问题](http://blog.csdn.net/bbirdsky/article/details/11921843)
+[java endorsed 官方](http://docs.oracle.com/javase/7/docs/technotes/guides/standards/)
+
