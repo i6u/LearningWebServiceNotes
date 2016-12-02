@@ -12,30 +12,80 @@
     <title>user list</title>
 </head>
 <body>
-<h3><%=request.getSession().getAttribute("loginUser")%></h3>
+<%
+    User user = (User) request.getSession().getAttribute("loginUser");
+
+
+%>
+<h3><%
+    if (user != null) {
+%>
+    当前登录的用户：<%=user.getNickname()%>
+    <%
+    } else {
+    %>
+    匿名用户只能浏览不能操作！
+    <%
+        }
+    %></h3>
 <table>
     <tr>
-        <th>姓名</th>
-        <th>密码</th>
-        <th>别名</th>
-        <th>操作</th>
+        <td>姓名</td>
+        <td>密码</td>
+        <td>别名</td>
+        <%
+            if (user != null) {
+        %>
+        <td>操作</td>
+        <%
+            }
+        %>
     </tr>
-<%
-    List<User> users = (List<User>) request.getAttribute("users");
-    for (User u : users) {
-%>
+    <%
+        List<User> users = (List<User>) request.getAttribute("users");
+        for (User u : users) {
+    %>
     <tr>
-        <td><%=u.getUsername()%></td>
-        <td><%=u.getPassword()%></td>
-        <td><%=u.getNickname()%></td>
+        <td><%=u.getUsername()%>
+        </td>
+        <td><%=u.getPassword()%>
+        </td>
+        <td><%=u.getNickname()%>
+        </td>
+        <%
+            if (user != null) {
+        %>
         <td><a href="<%=request.getContextPath()%>/user?m=del&username=<%=u.getUsername()%>">删除</a></td>
+        <%
+            }
+        %>
     </tr>
-<%
-    }
-%>
+    <%
+        }
+    %>
     <tr>
-        <td><button onclick="window.location='<%=request.getContextPath()%>/user?m=addInput'">add user</button></td>
+        <%
+            if (user != null) {
+        %>
+
+        <td colspan="2">
+            <button onclick="window.location='<%=request.getContextPath()%>/user?m=addInput'">add user</button>
+        </td>
+        <td colspan="2">
+            <button onclick="window.location='<%=request.getContextPath()%>/user?m=loginOut'">login out</button>
+        </td>
+
+        <%
+        } else {
+        %>
+        <td colspan="3">
+            <button onclick="window.location='<%=request.getContextPath()%>/user?m=loginOut'">login</button>
+        </td>
+        <%
+            }
+        %>
     </tr>
+
 </table>
 </body>
 </html>

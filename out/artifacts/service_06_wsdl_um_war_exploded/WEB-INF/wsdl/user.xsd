@@ -21,6 +21,7 @@
     </xsd:complexType>
     <xsd:complexType name="upload">
         <xsd:sequence>
+            <!--文件传输  base64Binary-->
             <xsd:element name="file" type="xsd:base64Binary"/>
         </xsd:sequence>
     </xsd:complexType>

@@ -22,12 +22,15 @@ public class UserManageServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        //URL url = new URL("http://localhost:7788/um/services?wsdl");
-        //QName qName = new QName("http://service.learn.zyr", "UserService");
+        URL url = new URL("http://localhost:7788/um/services?wsdl");
+        QName qName = new QName("http://service.learn.zyr", "UserService");
         //this.userService = new UserService(url,qName);
         this.userService = new UserService();
         this.userServicePort = userService.getUserServicePort();
         String method = request.getParameter("m");
+        if (method == null) {
+            loginOut(request,response);
+        }
         switch (method) {
             case "login":
                 login(request, response);
@@ -43,6 +46,9 @@ public class UserManageServlet extends HttpServlet {
                 break;
             case "list":
                 list(request, response);
+                break;
+            case "loginOut":
+                loginOut(request,response);
                 break;
             default:
                 list(request, response);
@@ -111,6 +117,14 @@ public class UserManageServlet extends HttpServlet {
         }
     }
 
+    public void loginOut(HttpServletRequest request,HttpServletResponse response) {
+        request.getSession().invalidate();
+        try {
+            response.sendRedirect("login.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
 
 }
