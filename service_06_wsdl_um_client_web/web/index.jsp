@@ -11,6 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <div><h1>404</h1></div>
   </body>
 </html>

@@ -2,7 +2,6 @@ package zyr.learn.test;
 
 import com.sun.xml.ws.api.message.Headers;
 import com.sun.xml.ws.developer.WSBindingProvider;
-import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.w3c.dom.Document;
@@ -13,8 +12,6 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -118,9 +115,9 @@ public class TestUMClient {
             wsb.setOutboundHeaders(Headers.create(doc.getDocumentElement()));
 
             User u = new User();
-            u.setNickname("测试");
-            u.setPassword("abc");
-            u.setUsername("test01");
+            u.setNickname("测试11");
+            u.setPassword("abc11");
+            u.setUsername("test0111");
             port.add(u);
         }catch(Exception e) {
             System.out.println(e.getMessage());
@@ -147,16 +144,16 @@ public class TestUMClient {
         }
     }
 
-    @Test
-    public void testUpload() {
-        try {
-            byte[] file = FileUtils.readFileToByteArray(new File("/Users/zhouweitao/Pictures/Background/m.jpg"));
-            port.upload(file);
-        } catch (UserException_Exception e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
+    //@Test
+    //public void testUpload() {
+    //    try {
+    //        byte[] file = FileUtils.readFileToByteArray(new File("/Users/zhouweitao/Pictures/Background/m.jpg"));
+    //        port.upload(file);
+    //    } catch (UserException_Exception e) {
+    //        e.printStackTrace();
+    //    } catch (IOException e) {
+    //        e.printStackTrace();
+    //    }
+    //
+    //}
 }

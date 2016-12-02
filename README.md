@@ -97,8 +97,14 @@ Schema中元素是如何被定义的，属性是如何被定义的，元素和�
 * 通过`SAOPHandler`处理
 * 通过`JAX-WS RI`的方式（`Headers.create(element)`）直接把一个元素转换为`handler`
 
-```javax.xml.ws.soap.SOAPFaultException:webFault.messageName()方法异常，这是应为jdk也提供了这个jax-ws ri的实现，但是应为版本的问题，没有webFault.messageName()这个方法，项目默认却调用的jdk中jax-ws ri，没有调用我们手动导入的jax-ri包中的webFault.messageName()方法，解决方法是在jdk的jre中endorsed文件夹，把我们导入的高版本的jax-ws ri包拷贝到其中，jdk默认就会去加载这个包；如果项目时发布到tomcat中endorsed应放在tomcat根目录下```
+```javax.xml.ws.soap.SOAPFaultException:webFault.messageName()方法异常，这是应为jdk也提供了这个jax-ws ri的实现，但是应为版本的问题，没有webFault.messageName()这个方法，项目默认却调用的jdk中jax-ws ri，没有调用我们手动导入的jax-ri包中的webFault.messageName()方法，解决方法是在jdk的jre\lib中endorsed文件夹，把我们导入的高版本的jax-ws ri包拷贝到其中，jdk默认就会去加载这个包；如果项目时发布到tomcat中endorsed应放在tomcat根目录下```
 
 [java endorsed问题](http://blog.csdn.net/bbirdsky/article/details/11921843)
 [java endorsed 官方](http://docs.oracle.com/javase/7/docs/technotes/guides/standards/)
+
+### service_06_wsdl_um_client_web --》一个简单的用户管理系统
+
+* 基于`jax-ws`的远程调用，服务端使用的是`service_06_wsdl_um`
+* 基于`JAX-WS RI`的头处理
+* 注意包的引用问题
 
