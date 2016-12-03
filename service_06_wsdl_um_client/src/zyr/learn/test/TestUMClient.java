@@ -13,6 +13,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.ws.soap.MTOMFeature;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -35,8 +36,10 @@ public class TestUMClient {
         try {
             URL url = new URL("http://localhost:7887/um/services?wsdl");
             QName name = new QName(ns,"UserService");
-            us = new UserService(url,name);
-            //us = new UserService();
+            //us = new UserService(url,name);
+            us = new UserService();
+
+            //port = us.getUserServicePort(new MTOMFeature());
             port = us.getUserServicePort();
         } catch (MalformedURLException e) {
             e.printStackTrace();

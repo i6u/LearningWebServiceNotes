@@ -108,5 +108,16 @@ Schema中元素是如何被定义的，属性是如何被定义的，元素和�
 * 基于`JAX-WS RI`的头处理
 * 注意包的引用问题
 
-> 碰到一个问题，在add方法上添加了头文件验证，但是在进行add的时候总是显示头文件为空，`tcpmon`
+### service_07_wsdl_file -- 》 ws文件传输
+
+基于MOTM的二进制流传递
+* 首先在实现类中添加@MTOM注解
+* 在wsdl文件中上传文件的方法参数类型设置为base64Binary
+* 此时如果是基于契约优先的开发模式，接口中上传方法的参数为byte数组
+* 在客户端调用时，`getPort`方法中传入参数`new MTOMFeature()`如：`public IUserService getUserServicePort(WebServiceFeature... features) `;
+
+> 基于基于MOTM的二进制流传递这种方式文件时放在`soap body`中进行传递，不推荐使用
+
+
+
 
