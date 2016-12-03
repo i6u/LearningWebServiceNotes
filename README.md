@@ -110,13 +110,34 @@ Schema中元素是如何被定义的，属性是如何被定义的，元素和�
 
 ### service_07_wsdl_file -- 》 ws文件传输
 
-基于MOTM的二进制流传递
-* 首先在实现类中添加@MTOM注解
-* 在wsdl文件中上传文件的方法参数类型设置为base64Binary
-* 此时如果是基于契约优先的开发模式，接口中上传方法的参数为byte数组
-* 在客户端调用时，`getPort`方法中传入参数`new MTOMFeature()`如：`public IUserService getUserServicePort(WebServiceFeature... features) `;
 
-> 基于基于MOTM的二进制流传递这种方式文件时放在`soap body`中进行传递，不推荐使用
+**给予soap附件的传输方式**
+
+#### 第一种方式：参数使用`byte数组`，使用MTOM优化传输
+
+> MTOM（Message Transmission Optimization Mechanism）
+
+* 在wsdl文件中设置上传文件的方法参数类型设置为base64Binary
+* 在实现类中添加@MTOM注解
+* 此时通过`wsdl`文件`wsimport`导出的接口文件中上传方法的参数就是byte数组
+* 在客户端调用时，`getPort`方法中传入参数`new MTOMFeature()`如：调用`public IUserService getUserServicePort(WebServiceFeature... features) `时`getUserServicePort（new MTOMFeature()）`;
+
+
+#### 第二种方式 参数使用`DataHandler`，使用MTOM优化传输
+
+
+> 注意：DataHandler只有二进制数据，没有文件名、文件类型和文件大小等，需要额外的传输参数。通常自定义文件传输包装类来传输二进制和额外参数。
+
+[cxf 实战](http://blog.csdn.net/accountwcx/article/details/47165321)
+
+* 在wsdl文件中设置上传文件的方法参数类型采用如下设置 `<xsd:element xmlns:nsl="http://www.w3.org/2005/05/xmlmime" name="方法参数名" nsl:expectedContentTypes="application/octet-stream" type="xsd:base64Binary"/>`
+* 在实现类中添加注解`@BindingType(SOAPBinding.SOAP11HTTP_MTOM_BINDING)`参考`service_07_wsdl_file--》UserServiceImpl`
+* 此时服务器可以通过`dataHandler`获得文件流，参考`UserServiceImpl.upload`，客户端通过`dataHandler`传输文件流，参考`service_07_wsdl_file_client--》WSFileTest.test01`
+* 客户端启用`MTOM`的两种方式，参考`service_07_wsdl_file_client--》WSFileTest`
+
+
+
+
 
 
 
